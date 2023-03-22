@@ -31,7 +31,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 from pathlib import Path
 
 home_dir = Path.home()
-
+exec('pip install TA_Lib-0.4.24-cp38-cp38-win_amd64.whl')
 
 print(dir_path)
 
