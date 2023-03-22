@@ -35,11 +35,7 @@ def run_command(args):
         st.info(result.stdout)
     except subprocess.CalledProcessError as e:
         st.error(result.stderr)
-        
-
-run_command(["export", "TA_LIBRARY_PATH=$PREFIX/lib"])
-run_command(["export", "TA_INCLUDE_PATH=$PREFIX/include"])
-
+       
 # check if the library folder already exists, to avoid building everytime you load the pahe
 if not os.path.isdir("/tmp/ta-lib"):
 
@@ -63,7 +59,7 @@ if not os.path.isdir("/tmp/ta-lib"):
     os.system("make install")
     os.system('export TA_LIBRARY_PATH=/home/appuser/lib')
     os.system('export TA_INCLUDE_PATH=/home/appuser/include')
-    os.system('python setup.py install')
+    os.system('python3 setup.py install')
     # back to the cwd
     os.chdir(default_cwd)
     sys.stdout.flush()
