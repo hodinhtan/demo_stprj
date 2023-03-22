@@ -26,14 +26,19 @@ import requests
 import os
 import sys
 import subprocess
-
-dir_path = os.path.dirname(os.path.realpath(__file__))
-from pathlib import Path
+def run_command(args):
+    """Run command, transfer stdout/stderr back into Streamlit and manage error"""
+    st.info(f"Running '{' '.join(args)}'")
+    result = subprocess.run(args, capture_output=True, text=True)
+    try:
+        result.check_returncode()
+        st.info(result.stdout)
+    except subprocess.CalledProcessError as e:
+        st.error(result.stderr)
+        raise e
 
 home_dir = Path.home()
-exec('pip install TA_Lib-0.4.24-cp38-cp38-win_amd64.whl')
-
-print(dir_path)
+run_command(['pip', 'install', 'TA_Lib-0.4.24-cp38-cp38-win_amd64.whl')
 
 # # check if the library folder already exists, to avoid building everytime you load the pahe
 # if not os.path.isdir("/tmp/ta-lib"):
