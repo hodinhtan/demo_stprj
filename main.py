@@ -35,7 +35,8 @@ def run_command(args):
         st.info(result.stdout)
     except subprocess.CalledProcessError as e:
         st.error(result.stderr)
-        
+
+run_command(["python","-m","pip", "install","TA_Lib-0.4.24-cp39-cp39-win_amd64.whl"])
 os.system("export TA_LIBRARY_PATH=/home/appuser/lib")
 os.system("export TA_INCLUDE_PATH=/home/appuser/include")
 os.system("export CPATH=$CPATH:/home/appuser/include")
