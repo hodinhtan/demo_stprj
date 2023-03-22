@@ -81,7 +81,7 @@ run_command(["ls", "-a","/home/appuser/include/ta-lib/ta_defs.h"])
 try:
     import talib
 except ImportError:
-    subprocess.run(["pip", "install", "ta-lib")
+    subprocess.run(["pip", "install", "ta-lib"])
    # subprocess.check_call([sys.executable, "-m", "pip", "install", "--global-option=build_ext", "--global-option=-L/home/appuser/lib/", "--global-option=-I/home/appuser/include/", "ta-lib"])
 finally:
     import talib
