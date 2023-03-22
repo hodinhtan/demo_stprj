@@ -38,7 +38,7 @@ def run_command(args):
         raise e
 
 home_dir = Path.home()
-run_command(['pip', 'install', 'TA_Lib-0.4.24-cp38-cp38-win_amd64.whl')
+run_command(['pip', 'install', 'TA_Lib-0.4.24-cp38-cp38-win_amd64.whl'])
 
 # # check if the library folder already exists, to avoid building everytime you load the pahe
 # if not os.path.isdir("/tmp/ta-lib"):
