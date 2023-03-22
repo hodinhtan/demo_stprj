@@ -37,32 +37,35 @@ def run_command(args):
         st.error(result.stderr)
        
 # check if the library folder already exists, to avoid building everytime you load the pahe
-if not os.path.isdir("/tmp/ta-lib"):
+try:
+    if not os.path.isdir("/tmp/ta-lib"):
 
-    # Download ta-lib to disk
-    with open("/tmp/ta-lib-0.4.0-src.tar.gz", "wb") as file:
-        response = requests.get(
-            "http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz"
-        )
-        file.write(response.content)
-    # get our current dir, to configure it back again. Just house keeping
-    default_cwd = os.getcwd()
-    os.chdir("/tmp")
-    # untar
-    os.system("tar -zxvf ta-lib-0.4.0-src.tar.gz")
-    os.chdir("/tmp/ta-lib")
-    os.system("ls -la /app/equity/")
-    # build
-    os.system("./configure --prefix=/home/appuser")
-    os.system("export TA_LIBRARY_PATH=/home/appuser/lib")
-    os.system("export TA_INCLUDE_PATH=/home/appuser/include")
-    os.system("make")
-    # install
-    os.system("make install")
-    # back to the cwd
-    os.chdir(default_cwd)
-    sys.stdout.flush()
-
+        # Download ta-lib to disk
+        with open("/tmp/ta-lib-0.4.0-src.tar.gz", "wb") as file:
+            response = requests.get(
+                "http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz"
+            )
+            file.write(response.content)
+        # get our current dir, to configure it back again. Just house keeping
+        default_cwd = os.getcwd()
+        os.chdir("/tmp")
+        # untar
+        os.system("tar -zxvf ta-lib-0.4.0-src.tar.gz")
+        os.chdir("/tmp/ta-lib")
+        os.system("ls -la /app/equity/")
+        # build
+        os.system("./configure --prefix=/home/appuser")
+        os.system("export TA_LIBRARY_PATH=/home/appuser/lib")
+        os.system("export TA_INCLUDE_PATH=/home/appuser/include")
+        os.system("export CPATH=$CPATH:/home/appuser/include")
+        os.system("make")
+        # install
+        os.system("make install")
+        # back to the cwd
+        os.chdir(default_cwd)
+        sys.stdout.flush()
+except Exception as e:
+    st.info(e)
 # add the library to our current environment
 from ctypes import *
 
