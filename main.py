@@ -132,7 +132,7 @@ if but_01:
 if st.session_state.BUT_01_STATE:
     st.write(st.session_state.DATA_TV)
 
-customA = st.text_area('Set CustomA:', placeholder = str(home_dir))
+customA = st.text_area('Set CustomA:', placeholder = 'no thing')
 if st.button("Set CustomA"): 
     st.session_state.CustomA = customA
     st.write(common.cus_str2json(customA))
