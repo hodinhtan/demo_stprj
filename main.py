@@ -54,6 +54,8 @@ if not os.path.isdir("/tmp/ta-lib"):
     os.system("ls -la /app/equity/")
     # build
     os.system("./configure --prefix=/home/appuser")
+    os.system("export TA_LIBRARY_PATH=/home/appuser/lib")
+    os.system("export TA_INCLUDE_PATH=/home/appuser/include")
     os.system("make")
     # install
     os.system("make install")
