@@ -20,39 +20,6 @@ import vectorbt             as vbt
 from io                     import StringIO
 from datetime               import datetime
 from tvDatafeed             import TvDatafeed, Interval
-
-if not os.path.isdir("/tmp/ta-lib"):
-    with open("/tmp/ta-lib-0.4.0-src.tar.gz", "wb") as file:
-        response = requests.get(
-            "http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz"
-        )
-        file.write(response.content)
-    # get our current dir, to configure it back again. Just house keeping
-    default_cwd = os.getcwd()
-    os.chdir("/tmp")
-    # untar
-    os.system("tar -zxvf ta-lib-0.4.0-src.tar.gz")
-    os.chdir("/tmp/ta-lib")
-    os.system("ls -la /app/equity/")
-    # build
-    os.system("./configure --prefix=/home/appuser")
-    os.system("make")
-    # install
-    os.system("sudo make install")
-    # back to the cwd
-    os.chdir(default_cwd)
-    sys.stdout.flush()
-
-from ctypes import *
-
-lib = CDLL("/home/appuser/lib/libta_lib.so.0.0.0")
-# import library
-try:
-    import talib
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "--global-option=build_ext", "--global-option=-L/home/appuser/lib/", "--global-option=-I/home/appuser/include/", "ta-lib"])
-finally:
-    import talib
     
 pd.set_option('expand_frame_repr', False)
 
