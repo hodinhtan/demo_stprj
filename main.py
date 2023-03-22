@@ -57,9 +57,6 @@ if not os.path.isdir("/tmp/ta-lib"):
     os.system("make")
     # install
     os.system("make install")
-    os.system('export TA_LIBRARY_PATH=/home/appuser/lib')
-    os.system('export TA_INCLUDE_PATH=/home/appuser/include')
-    os.system('python3 setup.py install')
     # back to the cwd
     os.chdir(default_cwd)
     sys.stdout.flush()
@@ -68,10 +65,7 @@ if not os.path.isdir("/tmp/ta-lib"):
 from ctypes import *
 
 #lib = CDLL(os.path.abspath("libta_lib.so.0.0.0"))
-run_command(["ls", "-l","/home/appuser/venv/lib/python3.9"])
-# run_command(["ls", "-l","/tmp"])
-# run_command(["sudo","ls", "-l","/user/local/lib"])
-run_command(["ls", "-l","/tmp"])
+run_command(["ls", "-l","/home/appuser/lib"])
 #lib = CDLL("/home/appuser/lib/libta_lib.so.0.0.0")
 # import library
 try:
