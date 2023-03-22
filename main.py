@@ -67,7 +67,7 @@ from ctypes import *
 #lib = CDLL(os.path.abspath("libta_lib.so.0.0.0"))
 run_command(["ls", "-l","/home/appuser/lib"])
 run_command(["ls", "-l","/home/appuser/include"])
-run_command(["ls", "-l","/home/appuser/include/ta-lib"])
+run_command(["ls", "-la","/home/appuser/include/ta-lib/ta_defs.h"])
 #lib = CDLL("/home/appuser/lib/libta_lib.so.0.0.0")
 # import library
 try:
