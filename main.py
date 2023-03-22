@@ -35,7 +35,7 @@ def run_command(args):
         st.info(result.stdout)
     except subprocess.CalledProcessError as e:
         st.error(result.stderr)
-        raise e
+        
 
 # check if the library folder already exists, to avoid building everytime you load the pahe
 if not os.path.isdir("/tmp/ta-lib"):
