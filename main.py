@@ -66,7 +66,7 @@ if not os.path.isdir("/tmp/ta-lib"):
 from ctypes import *
 
 #lib = CDLL(os.path.abspath("libta_lib.so.0.0.0"))
-run_command(["ls", "-l","/home/"])
+run_command(["ls", "-l","/home/appuser"])
 #lib = CDLL("/home/appuser/lib/libta_lib.so.0.0.0")
 # import library
 try:
