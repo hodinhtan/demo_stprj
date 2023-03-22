@@ -68,7 +68,7 @@ from ctypes import *
 #lib = CDLL(os.path.abspath("libta_lib.so.0.0.0"))
 run_command(["ls", "-l","/home/appuser/venv/lib/python3.9"])
 # run_command(["ls", "-l","/tmp"])
-run_command(["sudo","ls", "-l","/user/local/lib"])
+# run_command(["sudo","ls", "-l","/user/local/lib"])
 run_command(["ls", "-l","/tmp"])
 lib = CDLL("/home/appuser/venv/lib/libta_lib.so.0.0.0")
 # import library
