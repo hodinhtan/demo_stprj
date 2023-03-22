@@ -35,7 +35,11 @@ def run_command(args):
         st.info(result.stdout)
     except subprocess.CalledProcessError as e:
         st.error(result.stderr)
-       
+        
+os.system("export TA_LIBRARY_PATH=/home/appuser/lib")
+os.system("export TA_INCLUDE_PATH=/home/appuser/include")
+os.system("export CPATH=$CPATH:/home/appuser/include")
+
 # check if the library folder already exists, to avoid building everytime you load the pahe
 try:
     if not os.path.isdir("/tmp/ta-lib"):
@@ -55,9 +59,7 @@ try:
         os.system("ls -la /app/equity/")
         # build
         os.system("./configure --prefix=/home/appuser")
-        os.system("export TA_LIBRARY_PATH=/home/appuser/lib")
-        os.system("export TA_INCLUDE_PATH=/home/appuser/include")
-        os.system("export CPATH=$CPATH:/home/appuser/include")
+       
         os.system("make")
         # install
         os.system("make install")
