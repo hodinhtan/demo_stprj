@@ -37,8 +37,6 @@ def run_command(args):
         st.error(result.stderr)
         raise e
 
-run_command(['python3', '-m', 'pip', 'install', 'TA-Lib'])
-
 # # check if the library folder already exists, to avoid building everytime you load the pahe
 # if not os.path.isdir("/tmp/ta-lib"):
 
